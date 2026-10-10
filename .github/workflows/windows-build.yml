@@ -1,0 +1,71 @@
+name: Build Windows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4.1'
+          extensions: sqlite3, pdo_sqlite, fileinfo, mbstring, openssl, curl, zip, gd
+          tools: composer
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install PHP dependencies for Windows
+        run: |
+          composer config platform-check false
+          composer install --no-interaction --prefer-dist --optimize-autoloader --ignore-platform-reqs
+          composer require livewire/livewire --no-interaction --prefer-dist
+
+      - name: Create .env file
+        run: |
+          Copy-Item .env.example .env -ErrorAction SilentlyContinue
+          php artisan key:generate --no-interaction
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Install NativePHP
+        run: php artisan native:install
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Build NativePHP Windows
+        run: php artisan native:build win
+
+      - name: Debug - List generated files
+        shell: pwsh
+        run: |
+          Write-Host "=== Generated files in nativephp/electron/dist/ ===" -ForegroundColor Green
+          if (Test-Path "nativephp/electron/dist") {
+            Get-ChildItem -Path "nativephp/electron/dist" -Recurse | ForEach-Object {
+              Write-Host "Found: $($_.FullName)" -ForegroundColor Yellow
+              Write-Host "  Size: $([math]::Round($_.Length/1MB, 2)) MB" -ForegroundColor Cyan
+            }
+          } else {
+            Write-Host "Directory not found!" -ForegroundColor Red
+          }
+
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Proto-X-24-Windows
+          path: |
+            nativephp/electron/dist/*.exe
+            nativephp/electron/dist/*.msi
+            nativephp/electron/dist/*.blockmap
+          if-no-files-found: error
