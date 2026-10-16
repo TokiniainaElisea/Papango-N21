@@ -9,6 +9,8 @@ new class extends Component {
 
     public string $search = '';
 
+    protected $paginationTheme = 'bootstrap';
+    
     public function updatingSearch()
     {
         $this->resetPage();
@@ -127,20 +129,10 @@ new class extends Component {
             </div>
         @endforelse
     </div>
-
     {{-- Pagination --}}
     @if ($services->hasPages())
-        <div class="d-flex justify-content-between align-items-center pt-3 mt-2 border-top">
-            <small class="text-secondary">
-                <span class="fw-semibold">{{ $services->firstItem() }}</span>
-                –
-                <span class="fw-semibold">{{ $services->lastItem() }}</span>
-                sur
-                <span class="fw-semibold">{{ $services->total() }}</span>
-            </small>
-            <div>
-                {{ $services->links() }}
-            </div>
+        <div class="my-2">
+            {{ $services->links() }}
         </div>
     @endif
 

@@ -63,7 +63,7 @@ jobs:
       - name: Upload Windows build
         uses: actions/upload-artifact@v4
         with:
-          name: Proto-X-24-Windows
+          name: Papango-N-21
           path: |
             nativephp/electron/dist/*.exe
             nativephp/electron/dist/*.msi
