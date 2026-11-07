@@ -70,7 +70,8 @@
                                         <i class="bi bi-pencil"></i>
                                     </button>
                                     <button type="button" class="btn btn-danger" title="Supprimer"
-                                        data-bs-toggle="modal" data-bs-target="{{ '#deleteClientModal' . $client->id }}">
+                                        data-bs-toggle="modal"
+                                        data-bs-target="{{ '#deleteClientModal' . $client->id }}">
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </div>
@@ -105,19 +106,8 @@
 
         {{-- Pagination --}}
         @if ($clients->hasPages())
-            <div class="d-flex justify-content-between align-items-center px-3 py-3 border-top">
-                <small class="text-secondary">
-                    Affichage de
-                    <span class="fw-semibold">{{ $clients->firstItem() }}</span>
-                    à
-                    <span class="fw-semibold">{{ $clients->lastItem() }}</span>
-                    sur
-                    <span class="fw-semibold">{{ $clients->total() }}</span>
-                    clients
-                </small>
-                <div>
-                    {{ $clients->links() }}
-                </div>
+            <div class="my-2">
+                {{ $clients->links() }}
             </div>
         @endif
 

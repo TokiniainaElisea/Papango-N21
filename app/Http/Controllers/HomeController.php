@@ -104,8 +104,8 @@ class HomeController extends Controller
             ->count('client_id');
 
         // 5. Papiers en stock bas
-        //    On considère un papier en stock bas si son stock total <= un seuil (ex: 100)
-        $lowStockThreshold = 100;
+        //    On considère un papier en stock bas si son stock total <= un seuil (ex: 10)
+        $lowStockThreshold = 10;
 
         $lowStockCount = Stock::query()
             ->withSum('stock_movement as total_stock', 'in_stock')

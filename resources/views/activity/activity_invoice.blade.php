@@ -162,14 +162,12 @@
 
     <div class="invoice-sheet">
 
-        {{-- ============================================================ --}}
         {{-- EN-TÊTE --}}
-        {{-- ============================================================ --}}
         <div class="invoice-header d-flex justify-content-between align-items-start">
             <div>
                 <div class="invoice-brand">
                     <i class="bi bi-grid-1x2-fill text-primary me-2"></i>
-                    Manda Service Copie
+                    {{ $user->name }}
                 </div>
             </div>
 
@@ -183,9 +181,7 @@
             </div>
         </div>
 
-        {{-- ============================================================ --}}
         {{-- INFOS CLIENT + PAIEMENT --}}
-        {{-- ============================================================ --}}
         <div class="row mb-4">
             {{-- Client --}}
             <div class="col-7">
@@ -240,9 +236,7 @@
             </div>
         </div>
 
-        {{-- ============================================================ --}}
         {{-- TABLEAU DES PRESTATIONS --}}
-        {{-- ============================================================ --}}
         <div class="section-title">Détail des prestations</div>
 
         <table class="table invoice-table mb-4">
@@ -286,9 +280,7 @@
             </tbody>
         </table>
 
-        {{-- ============================================================ --}}
         {{-- TOTAUX --}}
-        {{-- ============================================================ --}}
         <div class="row justify-content-end">
             <div class="col-12 col-md-6">
                 @php
@@ -317,9 +309,7 @@
             </div>
         </div>
 
-        {{-- ============================================================ --}}
         {{-- PAPIER CONSOMMÉ --}}
-        {{-- ============================================================ --}}
         @php
             $paperConsumption = [];
             foreach ($activity->details as $detail) {
@@ -339,9 +329,7 @@
             }
         @endphp
 
-        {{-- ============================================================ --}}
         {{-- NOTE --}}
-        {{-- ============================================================ --}}
         @if ($activity->note)
             <div class="mt-4 pt-3 border-top">
                 <div class="section-title">Note</div>
@@ -349,9 +337,7 @@
             </div>
         @endif
 
-        {{-- ============================================================ --}}
         {{-- PIED DE PAGE --}}
-        {{-- ============================================================ --}}
         <div class="mt-5 pt-4 border-top text-center text-secondary small">
             <div>
                 Merci de votre confiance.

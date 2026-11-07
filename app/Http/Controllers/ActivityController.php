@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -55,6 +56,8 @@ class ActivityController extends Controller
             'details.service.stock.format',
         ]);
 
-        return view('activity.activity_invoice', compact('activity'));
+        $user = User::first();
+
+        return view('activity.activity_invoice', compact('activity', 'user'));
     }
 }

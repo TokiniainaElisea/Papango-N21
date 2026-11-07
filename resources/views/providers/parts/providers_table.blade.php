@@ -66,7 +66,8 @@
                             {{-- Actions --}}
                             <td class="text-end pe-3">
                                 <div class="btn-group btn-group-sm" role="group">
-                                    <a href="{{ route('providers.show', $provider) }}" class="btn btn-info" title="Voir">
+                                    <a href="{{ route('providers.show', $provider) }}" class="btn btn-info"
+                                        title="Voir">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                     <button type="button" class="btn btn-secondary" title="Modifier"
@@ -82,12 +83,12 @@
 
                             @include('providers.parts.edit_provider', [
                                 'id' => $provider->id,
-                                'provider' => $provider 
+                                'provider' => $provider,
                             ])
 
                             @include('providers.parts.delete_provider', [
                                 'id' => $provider->id,
-                                'provider' => $provider
+                                'provider' => $provider,
                             ])
                         </tr>
                     @empty
@@ -109,19 +110,8 @@
 
         {{-- Pagination --}}
         @if ($providers->hasPages())
-            <div class="d-flex justify-content-between align-items-center px-3 py-3 border-top">
-                <small class="text-secondary">
-                    Affichage de
-                    <span class="fw-semibold">{{ $providers->firstItem() }}</span>
-                    à
-                    <span class="fw-semibold">{{ $providers->lastItem() }}</span>
-                    sur
-                    <span class="fw-semibold">{{ $providers->total() }}</span>
-                    fournisseurs
-                </small>
-                <div>
-                    {{ $providers->links() }}
-                </div>
+            <div class="my-2">
+                {{ $providers->links() }}
             </div>
         @endif
 

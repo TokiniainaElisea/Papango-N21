@@ -43,10 +43,8 @@
 
         <div class="row g-4">
 
-            {{-- ============================================================ --}}
-            {{-- COLONNE PRINCIPALE --}}
-            {{-- ============================================================ --}}
-            <div class="col-12 col-lg-8">
+                {{-- COLONNE PRINCIPALE --}}
+                <div class="col-12 col-lg-8">
 
                 {{-- Carte : lignes de la vente --}}
                 <div class="card border-0 shadow-sm mb-4">
@@ -221,10 +219,8 @@
 
             </div>
 
-            {{-- ============================================================ --}}
-            {{-- COLONNE LATÉRALE --}}
-            {{-- ============================================================ --}}
-            <div class="col-12 col-lg-4">
+                {{-- COLONNE LATÉRALE --}}
+                <div class="col-12 col-lg-4">
 
                 {{-- Carte : client --}}
                 <div class="card border-0 shadow-sm mb-4">

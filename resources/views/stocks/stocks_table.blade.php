@@ -67,8 +67,7 @@
                             {{-- Actions --}}
                             <td class="text-end pe-3">
                                 <div class="btn-group btn-group-sm" role="group">
-                                    <a href="{{ route('stocks.show', $stock) }}" class="btn btn-info"
-                                        title="Voir">
+                                    <a href="{{ route('stocks.show', $stock) }}" class="btn btn-info" title="Voir">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                     <a href="{{ route('stocks.edit', $stock) }}" class="btn btn-secondary"
@@ -102,19 +101,8 @@
 
         {{-- Pagination --}}
         @if ($stocks->hasPages())
-            <div class="d-flex justify-content-between align-items-center px-3 py-3 border-top">
-                <small class="text-secondary">
-                    Affichage de
-                    <span class="fw-semibold">{{ $stocks->firstItem() }}</span>
-                    à
-                    <span class="fw-semibold">{{ $stocks->lastItem() }}</span>
-                    sur
-                    <span class="fw-semibold">{{ $stocks->total() }}</span>
-                    papiers
-                </small>
-                <div>
-                    {{ $stocks->links() }}
-                </div>
+            <div class="my-2">
+                {{ $stocks->links() }}
             </div>
         @endif
 

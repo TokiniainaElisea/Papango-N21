@@ -10,7 +10,8 @@
                         <th scope="col" class="text-secondary small text-uppercase fw-semibold">Client</th>
                         <th scope="col" class="text-end text-secondary small text-uppercase fw-semibold">Total</th>
                         <th scope="col" class="text-secondary small text-uppercase fw-semibold">Date</th>
-                        <th scope="col" class="text-end pe-3 text-secondary small text-uppercase fw-semibold">Actions</th>
+                        <th scope="col" class="text-end pe-3 text-secondary small text-uppercase fw-semibold">Actions
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,7 +21,7 @@
                             <td class="ps-3">
                                 <div class="d-flex align-items-center">
                                     <div class="rounded-3 bg-primary-subtle text-primary d-flex align-items-center justify-content-center me-2 flex-shrink-0"
-                                         style="width: 36px; height: 36px;">
+                                        style="width: 36px; height: 36px;">
                                         <i class="bi bi-receipt small"></i>
                                     </div>
                                     <span class="fw-semibold">{{ $activity->ref }}</span>
@@ -29,9 +30,9 @@
 
                             {{-- Client --}}
                             <td>
-                                @if($activity->client)
+                                @if ($activity->client)
                                     <a href="{{ route('clients.show', $activity->client) }}"
-                                       class="text-decoration-none link-body-emphasis d-flex align-items-center">
+                                        class="text-decoration-none link-body-emphasis d-flex align-items-center">
                                         <i class="bi bi-person text-secondary me-1"></i>
                                         {{ $activity->client->firstname }} {{ $activity->client->name }}
                                     </a>
@@ -65,8 +66,7 @@
                             {{-- Actions --}}
                             <td class="text-end pe-3">
                                 <a href="{{ route('activities.show', $activity) }}"
-                                   class="btn btn-sm btn-outline-secondary"
-                                   title="Voir le détail">
+                                    class="btn btn-sm btn-outline-secondary" title="Voir le détail">
                                     <i class="bi bi-eye"></i>
                                 </a>
                             </td>
@@ -76,7 +76,7 @@
                             <td colspan="5" class="text-center py-5">
                                 <i class="bi bi-inbox fs-1 text-secondary d-block mb-2"></i>
                                 <p class="text-secondary mb-1">Aucune activité trouvée.</p>
-                                @if(request()->hasAny(['ref', 'client_name', 'date_from', 'date_to']))
+                                @if (request()->hasAny(['ref', 'client_name', 'date_from', 'date_to']))
                                     <a href="{{ route('activities.index') }}" class="small">
                                         Réinitialiser les filtres
                                     </a>
@@ -89,20 +89,9 @@
         </div>
 
         {{-- Pagination --}}
-        @if($activities->hasPages())
-            <div class="d-flex justify-content-between align-items-center px-3 py-3 border-top">
-                <small class="text-secondary">
-                    Affichage de
-                    <span class="fw-semibold">{{ $activities->firstItem() }}</span>
-                    à
-                    <span class="fw-semibold">{{ $activities->lastItem() }}</span>
-                    sur
-                    <span class="fw-semibold">{{ $activities->total() }}</span>
-                    activités
-                </small>
-                <div>
-                    {{ $activities->links() }}
-                </div>
+        @if ($activities->hasPages())
+            <div class="my-2">
+                {{ $activities->links() }}
             </div>
         @endif
 

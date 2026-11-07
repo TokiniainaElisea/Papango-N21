@@ -108,8 +108,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                title="Supprimer">
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Supprimer">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -129,19 +128,8 @@
 
             {{-- Pagination --}}
             @if ($expenses->hasPages())
-                <div class="d-flex justify-content-between align-items-center px-3 py-3 border-top">
-                    <small class="text-secondary">
-                        Affichage de
-                        <span class="fw-semibold">{{ $expenses->firstItem() }}</span>
-                        à
-                        <span class="fw-semibold">{{ $expenses->lastItem() }}</span>
-                        sur
-                        <span class="fw-semibold">{{ $expenses->total() }}</span>
-                        dépenses
-                    </small>
-                    <div>
-                        {{ $expenses->links() }}
-                    </div>
+                <div class="my-2">
+                    {{ $expenses->links() }}
                 </div>
             @endif
 
