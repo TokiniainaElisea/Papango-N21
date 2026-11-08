@@ -30,7 +30,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-12">
 
                 <div class="card border-0 shadow-lg">
 
@@ -74,21 +74,30 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            {{-- Nom --}}
+                            {{-- ============================================ --}}
+                            {{-- SECTION : ENTREPRISE --}}
+                            {{-- ============================================ --}}
+                            <h2 class="h6 text-uppercase text-secondary fw-bold mb-3 pb-2 border-bottom"
+                                style="font-size: .7rem; letter-spacing: .5px;">
+                                <i class="bi bi-building me-1"></i>
+                                Informations de l'entreprise
+                            </h2>
+
+                            {{-- Nom de la société --}}
                             <div class="mb-3">
                                 <label for="name" class="form-label small fw-semibold text-secondary">
-                                    Nom complet
+                                    Nom de la société
                                 </label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-body-tertiary border-end-0">
-                                        <i class="bi bi-person text-secondary"></i>
+                                        <i class="bi bi-building text-secondary"></i>
                                     </span>
                                     <input type="text"
                                            name="name"
                                            id="name"
                                            class="form-control border-start-0 @error('name') is-invalid @enderror"
                                            value="{{ old('name') }}"
-                                           placeholder="Ex : Naruto Uzumaki"
+                                           placeholder="Ex : Papango N21"
                                            required
                                            autofocus>
                                     @error('name')
@@ -96,6 +105,111 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            {{-- Nom du gérant --}}
+                            <div class="mb-3">
+                                <label for="manager" class="form-label small fw-semibold text-secondary">
+                                    Nom du gérant
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-body-tertiary border-end-0">
+                                        <i class="bi bi-person text-secondary"></i>
+                                    </span>
+                                    <input type="text"
+                                           name="manager"
+                                           id="manager"
+                                           class="form-control border-start-0 @error('manager') is-invalid @enderror"
+                                           value="{{ old('manager') }}"
+                                           placeholder="Ex : Tokiniaina"
+                                           required>
+                                    @error('manager')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- Adresse --}}
+                            <div class="mb-3">
+                                <label for="adress" class="form-label small fw-semibold text-secondary">
+                                    Adresse
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-body-tertiary border-end-0">
+                                        <i class="bi bi-geo-alt text-secondary"></i>
+                                    </span>
+                                    <input type="text"
+                                           name="adress"
+                                           id="adress"
+                                           class="form-control border-start-0 @error('adress') is-invalid @enderror"
+                                           value="{{ old('adress') }}"
+                                           placeholder="Ex : Lot II M 12 Bis, Antananarivo">
+                                    @error('adress')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- NIF / STAT / RCS (3 colonnes) --}}
+                            <div class="row g-3 mb-3">
+
+                                {{-- NIF --}}
+                                <div class="col-12 col-md-4">
+                                    <label for="nif" class="form-label small fw-semibold text-secondary">
+                                        NIF
+                                    </label>
+                                    <input type="text"
+                                           name="nif"
+                                           id="nif"
+                                           class="form-control @error('nif') is-invalid @enderror"
+                                           value="{{ old('nif') }}"
+                                           placeholder="N° fiscal">
+                                    @error('nif')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                {{-- STAT --}}
+                                <div class="col-12 col-md-4">
+                                    <label for="stat" class="form-label small fw-semibold text-secondary">
+                                        STAT
+                                    </label>
+                                    <input type="text"
+                                           name="stat"
+                                           id="stat"
+                                           class="form-control @error('stat') is-invalid @enderror"
+                                           value="{{ old('stat') }}"
+                                           placeholder="N° statistique">
+                                    @error('stat')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                {{-- RCS --}}
+                                <div class="col-12 col-md-4">
+                                    <label for="rcs" class="form-label small fw-semibold text-secondary">
+                                        RCS
+                                    </label>
+                                    <input type="text"
+                                           name="rcs"
+                                           id="rcs"
+                                           class="form-control @error('rcs') is-invalid @enderror"
+                                           value="{{ old('rcs') }}"
+                                           placeholder="N° registre">
+                                    @error('rcs')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                            </div>
+
+                            {{-- ============================================ --}}
+                            {{-- SECTION : COMPTE --}}
+                            {{-- ============================================ --}}
+                            <h2 class="h6 text-uppercase text-secondary fw-bold mb-3 pb-2 border-bottom mt-4"
+                                style="font-size: .7rem; letter-spacing: .5px;">
+                                <i class="bi bi-shield-lock me-1"></i>
+                                Identifiants de connexion
+                            </h2>
 
                             {{-- Email --}}
                             <div class="mb-3">
@@ -177,7 +291,7 @@
                     <div class="card-footer bg-body-tertiary border-0 text-center py-3">
                         <small class="text-secondary">
                             <i class="bi bi-shield-lock me-1"></i>
-                            Configuration initiale — v1.0.0
+                            Configuration initiale — v1.1.0
                         </small>
                     </div>
 
@@ -186,7 +300,6 @@
             </div>
         </div>
     </div>
-
     <script>
         document.querySelector('form').addEventListener('submit', () => {
             const btn = document.getElementById('submitBtn');

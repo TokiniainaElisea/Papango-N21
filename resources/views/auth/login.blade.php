@@ -136,7 +136,7 @@
                     <div class="card-footer bg-body-tertiary border-0 text-center py-3">
                         <small class="text-secondary d-block">
                             <i class="bi bi-shield-lock me-1"></i>
-                            Accès réservé — v1.0.0
+                            Accès réservé — v1.1.0
                         </small>
 
                         {{-- Lien "Créer un compte" (visible seulement si aucun utilisateur n'existe) --}}

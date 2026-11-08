@@ -97,6 +97,13 @@
             </small>
         </li>
 
+        <li>
+            <a class="nav-link text-decoration-none link-body-emphasis text-decoration-none link-body-emphasis  d-flex align-items-center rounded-3 {{ request()->routeIs('profile*') ? 'active bg-primary' : '' }}" href="{{ route('profile.edit') }}">
+                <i class="bi bi-person me-2"></i>
+                Mon profil
+            </a>
+        </li>
+
         <li class="nav-item">
             <a href="{{ route('preferences.about') }}"
                 class="nav-link text-decoration-none link-body-emphasis text-decoration-none link-body-emphasis  d-flex align-items-center rounded-3 {{ request()->routeIs('preferences*') ? 'active bg-primary' : '' }}">
@@ -109,7 +116,8 @@
         <li class="nav-item">
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="nav-link text-decoration-none link-body-emphasis text-decoration-none link-body-emphasis  d-flex align-items-center rounded-3">
+                <button type="submit"
+                    class="nav-link text-decoration-none link-body-emphasis text-decoration-none link-body-emphasis  d-flex align-items-center rounded-3">
                     <i class="bi bi-box-arrow-right me-2"></i> Déconnexion
                 </button>
             </form>

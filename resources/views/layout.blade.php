@@ -15,16 +15,20 @@
 </head>
 
 <body>
-    <script src="{{ asset('js/chart.js') }}"> </script>
+    <script src="{{ asset('js/chart.js') }}"></script>
     @include('navigation.header')
     <div class="container-fluid d-flex">
         @include('navigation.sidebar')
         <div class="flex-grow-1 my-2">
+            {{-- Messages flash --}}
             @if (session('success'))
-            <div class="card-body bg-success text-light p-2 mx-4">
-                {{ session('success') }}
-            </div>
-        @endif
+                <div class="alert alert-success alert-dismissible mx-4 fade show d-flex align-items-center" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    {{ session('success') }}
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"
+                        aria-label="Fermer"></button>
+                </div>
+            @endif
             @yield('content')
         </div>
     </div>

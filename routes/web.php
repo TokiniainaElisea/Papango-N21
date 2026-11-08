@@ -32,6 +32,8 @@ Route::post('/register', [AuthController::class, 'register'])
 Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profile', [AuthController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [AuthController::class, 'update'])->name('profile.update');
 
     Route::prefix('/')->controller(HomeController::class)->group(function () {
         //index

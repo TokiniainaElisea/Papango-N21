@@ -163,22 +163,56 @@
     <div class="invoice-sheet">
 
         {{-- EN-TÊTE --}}
-        <div class="invoice-header d-flex justify-content-between align-items-start">
+        <div class="invoice-header d-flex justify-content-between align-items-start gap-3">
+
+            {{-- Bloc entreprise --}}
             <div>
                 <div class="invoice-brand">
-                    <i class="bi bi-grid-1x2-fill text-primary me-2"></i>
                     {{ $user->name }}
                 </div>
+
+                {{-- Infos légales (affichées seulement si présentes) --}}
+                @php
+                    $legalLines = [];
+                    if ($user->adress) {
+                        $legalLines[] = ['icon' => 'bi-geo-alt', 'label' => null, 'value' => $user->adress];
+                    }
+                    if ($user->nif) {
+                        $legalLines[] = ['icon' => 'bi-hash', 'label' => 'NIF', 'value' => $user->nif];
+                    }
+                    if ($user->stat) {
+                        $legalLines[] = ['icon' => 'bi-hash', 'label' => 'STAT', 'value' => $user->stat];
+                    }
+                    if ($user->rcs) {
+                        $legalLines[] = ['icon' => 'bi-hash', 'label' => 'RCS', 'value' => $user->rcs];
+                    }
+                @endphp
+
+                @if (count($legalLines) > 0)
+                    <div class="text-secondary small mt-2">
+                        @foreach ($legalLines as $line)
+                            <div class="d-flex align-items-center gap-1">
+                                <i class="bi {{ $line['icon'] }}"></i>
+                                @if ($line['label'])
+                                    <span class="fw-semibold">{{ $line['label'] }} :</span>
+                                @endif
+                                <span>{{ $line['value'] }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
+            {{-- Bloc facture --}}
             <div class="text-end">
                 <div class="section-title mb-1">Facture</div>
                 <div class="invoice-ref">{{ $activity->ref }}</div>
                 <div class="text-secondary small mt-1">
                     Date :
-                    <strong>{{ \Carbon\Carbon::parse($activity->sold_at)->format('d/m/Y') }}</strong>
+                    <strong>{{ \Carbon\Carbon::parse($activity->created_at)->format('d/m/Y') }}</strong>
                 </div>
             </div>
+
         </div>
 
         {{-- INFOS CLIENT + PAIEMENT --}}

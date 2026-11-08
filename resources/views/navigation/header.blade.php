@@ -2,9 +2,9 @@
     <div class="container-fluid">
 
         <a href="#"
-            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none px-2">
+            class="d-flex align-items-center fw-bold mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none px-2">
             <img src="{{ asset('icon.png') }}" alt="logo" width="30" class="me-2">
-            Papango N21
+            Papango <span class="text-primary"> N21 </span> 
         </a>
 
         <div class="d-flex">
