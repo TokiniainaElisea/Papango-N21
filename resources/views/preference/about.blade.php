@@ -10,7 +10,7 @@
             Retour
         </a>
         <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2">
-            <i class="bi bi-patch-check-fill me-1"></i> Version 1.0.0
+            <i class="bi bi-patch-check-fill me-1"></i> Version 1.1.0
         </span>
     </div>
 
@@ -28,11 +28,11 @@
                         </div>
                     </div>
 
-                    <h1 class="display-6 fw-bold  mb-2">Papango N21</h1>
-                    <p class="lead text-primary fw-medium mb-3">Solution globale de gestion pour centres multiservices</p>
+                    <h1 class="display-6 fw-bold  mb-2">Papango <span class="text-primary"> N21 </span> </h1>
+                    <p class="lead text-primary fw-medium mb-3">Solution globale de gestion pour multiservices</p>
 
                     <p class="text-secondary mx-auto mb-4" style="max-width: 680px; font-size: 0.95rem; line-height: 1.6;">
-                        Une plateforme complète conçue pour piloter efficacement l'activité au quotidien : de la vente de prestations (impressions, saisie, photocopies) jusqu'au contrôle du stock de papier, du suivi client/fournisseur et de la tenue du bilan financier.
+                        Une application complète conçue pour piloter efficacement l'activité au quotidien : de la vente de prestations (impressions, saisie, photocopies) jusqu'au contrôle du stock de papier, du suivi client/fournisseur et de la tenue du bilan financier.
                     </p>
 
                     {{-- Badges d'aperçu rapide --}}
